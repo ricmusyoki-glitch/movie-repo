@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rics movie sitet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <header class="header-section">
+        <div class="logo-div">
+            <h1>Rics Movie hub</h1>
+        </div>
+        
+        <nav class="nav-bar">
+            <a href="index.html">Home</a>
+            <a href="movie.html">Movies</a>
+            <a href="search.html">Search</a>
+        </nav>
+
+        <form action="search" class="form">
+            <input type="text" placeholder="search for movies">
+            <button type="submit" class="buttons">
+                Movies
+            </button>
+        </form>
+
+    </header>
+    <main class="movie-page">
+        <section class="movie-section">
+            <h2 class="heading">Find your genre here</h2>
+            <select name="moviefilter" id="themoviefilter" class="movie-filter">
+                <option value="all">All</option>
+                <option value="animation">Animation</option>
+                <option value="horror">Horror</option>
+                <option value="action">Action</option>
+            </select>
+
+        </section>
+
+        <section id="moviegrid" class="movie-description">
+            <article class="movie-card">
+                 <h3>movie title</h3>
+                 <p>api will show the movie</p>
+            </article>
+        </section>
+    </main>
+
+     <footer>
+        <p>&copy;Rics movie hub.All rights reserved</p>
+    </footer>
+</body>
+</html>
