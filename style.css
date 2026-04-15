@@ -14,4 +14,11 @@
   padding: 16px;
 
   background: var(--surface);
+} 
+.nav-bar {
+  display: flex;
+  gap: 16px;
+}
+.nav-bar a:hover {
+  color: var(--primary);
 }
