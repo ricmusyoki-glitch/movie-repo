@@ -193,3 +193,82 @@ button:hover {
 .mini-card button {
   margin-top: auto;
 }
+.top-rated {
+  padding: 2rem 1rem;
+}
+
+.top-rated-heading h2 {
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+/* Grid layout */
+.toprated-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  background: var(--surface);
+  padding: 1.9rem;
+  border-radius: 1rem;
+}
+
+/* Cards */
+.toprated-card article {
+  background: var(--surface-strong);
+  padding: 1rem;
+  border-radius: 0.8rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  position: relative;
+  transition: 0.2s ease;
+}
+
+/* Rating badge */
+.rating-part {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: var(--secondary);
+  color: var(--text);
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+}
+
+/* Text styling */
+.toprated-card h3 {
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+.toprated-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Button alignment */
+.toprated-card button {
+  margin-top: auto;
+}
+footer {
+  margin-top: 2rem;
+  padding: 1.5rem 1rem;
+
+  background: var(--surface);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  text-align: center;
+}
+
+footer p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
