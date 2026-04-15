@@ -22,7 +22,7 @@
 }
 body {
   background: linear-gradient(
-    135deg,
+    150deg,
     var(--bg),
     var(--secondary)
   );
@@ -145,4 +145,51 @@ button:hover {
 .form .buttons {
   padding: 0.4rem 0.9rem;
   font-size: 0.85rem;
+}
+.trending {
+  padding: 2rem 1rem;
+}
+
+.trending-heading h2 {
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+/* Grid layout */
+.trending-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  background: var(--surface);
+  padding: 1.9rem;
+  border-radius: 1rem;
+}
+
+/* Individual cards */
+.mini-card {
+  background: var(--surface-strong);
+  padding: 1rem;
+  border-radius: 0.8rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  transition: 0.2s ease;
+}
+
+.mini-card h3 {
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+.mini-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Push button to bottom */
+.mini-card button {
+  margin-top: auto;
 }
