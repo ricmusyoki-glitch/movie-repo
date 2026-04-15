@@ -80,3 +80,69 @@ button:hover {
   font-size: 0.9rem;
   color: var(--muted);
 }
+.header-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1rem 2rem;
+}
+
+/* Logo */
+.logo-div h1 {
+  font-size: 3.3rem;
+  color: var(--primary);
+}
+
+/* Navbar */
+.nav-bar {
+  display: flex;
+  gap: 9.5rem;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: x-large;
+  transition: color 0.2s ease;
+}
+
+.nav-bar a:hover {
+  color: var(--surface-strong);
+  background: var(--primary);
+  border-radius: 5rem;
+  padding: 0.8rem;
+}
+
+/* Search Form */
+.form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  background: var(--surface-strong);
+  padding: 0.3rem;
+  border-radius: 999px;
+}
+
+.form input {
+  border: none;
+  outline: none;
+
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+
+  background: transparent;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.form input::placeholder {
+  color: var(--muted);
+}
+
+/* Button (uses your global button style but slightly smaller) */
+.form .buttons {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+}
