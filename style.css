@@ -1,0 +1,17 @@
+:root {
+  --bg: #fffaf0;
+  --surface: rgba(255, 255, 255, 0.84);
+  --surface-strong: #fffef9;
+  --text: #183a37;
+  --muted: #556b68;
+  --primary: #260d82;
+  --secondary: #abbe37;
+}
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+
+  background: var(--surface);
+}
