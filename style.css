@@ -12,8 +12,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-
-  background: var(--surface);
 } 
 .nav-bar {
   display: flex;
@@ -21,4 +19,28 @@
 }
 .nav-bar a:hover {
   color: var(--primary);
+}
+body {
+  background: linear-gradient(
+    135deg,
+    var(--bg),
+    var(--secondary)
+  );
+}
+button {
+  cursor: pointer;
+
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+
+  background: var(--primary);
+  color: white;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  transition: all 0.2s ease;
+}
+button:hover {
+  background: var(--secondary);
 }
