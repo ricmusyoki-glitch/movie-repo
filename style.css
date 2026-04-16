@@ -272,3 +272,63 @@ footer p {
   color: var(--muted);
   font-size: 0.9rem;
 }
+
+/* MOvie.html page stylings*/
+.movies-page {
+  padding: 2rem 1rem;
+}
+
+/* Top section */
+.movie-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.heading {
+  color: var(--text);
+  font-size: 1.4rem;
+}
+
+.movie-filter {
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  font-size: large;
+  background: var(--primary);
+   color: #fffef9;
+  align-items: center;
+}
+
+/* Grid */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Cards */
+.movie-card {
+  background: var(--surface);
+  padding: 1rem;
+  border-radius: 0.8rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  transition: 0.2s ease;
+}
+
+.movie-card h3 {
+  color: var(--primary);
+}
+
+.movie-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.movie-card:hover {
+  transform: translateY(-4px);
+}
