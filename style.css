@@ -341,3 +341,13 @@ footer p {
   background: var(--surface-strong);
   color: var(--text);
 }
+.results-section {
+  background: var(--surface);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.movies-grid {
+  background: var(--surface-strong);
+  padding: 1rem;
+  border-radius: 1rem;
+} 
