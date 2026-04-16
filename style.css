@@ -332,3 +332,12 @@ footer p {
 .movie-card:hover {
   transform: translateY(-4px);
 }
+.search-section {
+  text-align: center;
+}
+.input-bar {
+  border-radius: 999px;
+  padding: 1rem;
+  background: var(--surface-strong);
+  color: var(--text);
+}
