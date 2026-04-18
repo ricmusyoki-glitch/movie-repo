@@ -26,7 +26,6 @@ async function getHeroMovie() {
   heromovie.innerHTML = `
     <img src="${IMAGE_URL + movie.poster_path}" alt="${movie.title}">
     <h3>${movie.title}</h3>
-    <p>⭐ ${movie.vote_average}</p>
     <button>Watch Now</button>
   `;
 }
@@ -46,21 +45,18 @@ async function getTrendingMovies() {
   trending1.innerHTML = `
     <img src="${IMAGE_URL + movies[0].poster_path}" alt="${movies[0].title}">
     <h3>${movies[0].title}</h3>
-    <p>⭐ ${movies[0].vote_average}</p>
     <button>Watch Now</button>
   `;
 
   trending2.innerHTML = `
     <img src="${IMAGE_URL + movies[1].poster_path}" alt="${movies[1].title}">
     <h3>${movies[1].title}</h3>
-    <p>⭐ ${movies[1].vote_average}</p>
     <button>Watch Now</button>
   `;
 
   trending3.innerHTML = `
     <img src="${IMAGE_URL + movies[2].poster_path}" alt="${movies[2].title}">
     <h3>${movies[2].title}</h3>
-    <p>⭐ ${movies[2].vote_average}</p>
     <button>Watch Now</button>
 
   `;
@@ -80,21 +76,21 @@ async function getTopRatedMovies() {
   toprated1.innerHTML = `
     <img src="${IMAGE_URL + movies[0].poster_path}" alt="${movies[0].title}">
     <h3>${movies[0].title}</h3>
-    <p>⭐ ${movies[0].vote_average}</p>
+    <p> ${movies[0].vote_average}</p>
     <button>Watch Now</button>
   `;
 
   toprated2.innerHTML = `
     <img src="${IMAGE_URL + movies[1].poster_path}" alt="${movies[1].title}">
     <h3>${movies[1].title}</h3>
-    <p>⭐ ${movies[1].vote_average}</p>
+    <p> ${movies[1].vote_average}</p>
     <button>Watch Now</button>
   `;
 
   toprated3.innerHTML = `
     <img src="${IMAGE_URL + movies[2].poster_path}" alt="${movies[2].title}">
     <h3>${movies[2].title}</h3>
-    <p>⭐ ${movies[2].vote_average}</p>
+    <p> ${movies[2].vote_average}</p>
     <button>Watch Now</button>
   `;
 }
