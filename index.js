@@ -13,6 +13,7 @@ const toprated1 = document.getElementById ("toprated1");
 const toprated2 = document.getElementById ("toprated2");
 const toprated3 = document.getElementById ("toprated3");
 
+/* this is the function to fetch movie from api to hero section*/
 async function getHeroMovie() {
   const response = await fetch(
     `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`
@@ -30,3 +31,38 @@ async function getHeroMovie() {
 }
 
 getHeroMovie();
+
+
+async function getTrendingMovies() {
+  const response = await fetch(
+    `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`
+  );
+
+  const data = await response.json();
+
+  const movies = data.results.slice(0, 3);
+
+  trending1.innerHTML = `
+    <img src="${IMAGE_URL + movies[0].poster_path}" alt="${movies[0].title}">
+    <h3>${movies[0].title}</h3>
+    <p>⭐ ${movies[0].vote_average}</p>
+    <button>Watch Now</button>
+  `;
+
+  trending2.innerHTML = `
+    <img src="${IMAGE_URL + movies[1].poster_path}" alt="${movies[1].title}">
+    <h3>${movies[1].title}</h3>
+    <p>⭐ ${movies[1].vote_average}</p>
+    <button>Watch Now</button>
+  `;
+
+  trending3.innerHTML = `
+    <img src="${IMAGE_URL + movies[2].poster_path}" alt="${movies[2].title}">
+    <h3>${movies[2].title}</h3>
+    <p>⭐ ${movies[2].vote_average}</p>
+    <button>Watch Now</button>
+
+  `;
+}
+getTrendingMovies();
+
