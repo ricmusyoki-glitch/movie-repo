@@ -27,6 +27,7 @@ async function getHeroMovie() {
     <img src="${IMAGE_URL + movie.poster_path}" alt="${movie.title}">
     <h3>${movie.title}</h3>
     <p>⭐ ${movie.vote_average}</p>
+    <button>Watch Now</button>
   `;
 }
 
@@ -66,3 +67,35 @@ async function getTrendingMovies() {
 }
 getTrendingMovies();
 
+
+async function getTopRatedMovies() {
+  const response = await fetch(
+    `${BASE_URL}/movie/top_rated?api_key=${API_KEY}`
+  );
+
+  const data = await response.json();
+
+  const movies = data.results.slice(0, 3);
+
+  toprated1.innerHTML = `
+    <img src="${IMAGE_URL + movies[0].poster_path}" alt="${movies[0].title}">
+    <h3>${movies[0].title}</h3>
+    <p>⭐ ${movies[0].vote_average}</p>
+    <button>Watch Now</button>
+  `;
+
+  toprated2.innerHTML = `
+    <img src="${IMAGE_URL + movies[1].poster_path}" alt="${movies[1].title}">
+    <h3>${movies[1].title}</h3>
+    <p>⭐ ${movies[1].vote_average}</p>
+    <button>Watch Now</button>
+  `;
+
+  toprated3.innerHTML = `
+    <img src="${IMAGE_URL + movies[2].poster_path}" alt="${movies[2].title}">
+    <h3>${movies[2].title}</h3>
+    <p>⭐ ${movies[2].vote_average}</p>
+    <button>Watch Now</button>
+  `;
+}
+getTopRatedMovies()

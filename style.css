@@ -59,7 +59,12 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
+}
+#heromovie img {
+  width: 1700px;
+  height: 700px;
+  object-fit: cover;
+  display: block;
 }
 .hero-content-bold p {
   font-weight: 600;
