@@ -86,6 +86,8 @@ getTrendingMovies();
 getTopRatedMovies();
 
 
+// SAFE VERSION OF YOUR CODE
+
 const themoviefilter = document.getElementById("themoviefilter");
 const moviearticle = document.getElementById("moviearticle");
 
@@ -96,51 +98,56 @@ const genres = {
     horror: 27
 };
 
-// Display Movies
-function displayMovies(movies) {
-    moviearticle.innerHTML = "";
+// Only run if elements exist on this page
+if (themoviefilter && moviearticle) {
 
-    movies.forEach(movie => {
-        moviearticle.innerHTML += `
-            <article class="movie-card">
-                <img src="${IMG_URL + movie.poster_path}" alt="${movie.title}">
-                <h3>${movie.title}</h3>
-                <p> ${movie.vote_average.toFixed(1)}</p>
-                <button>Watch Now</button>
-            </article>
-        `;
-    });
-}
+    // Display Movies
+    function displayMovies(movies) {
+        moviearticle.innerHTML = "";
 
-// All Movies
-async function getAllMovies() {
-    const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
-    const data = await response.json();
-
-    displayMovies(data.results.slice(0, 12));
-}
-
-// Genre Movies
-async function getGenreMovies(genreId) {
-    const response = await fetch(
-        `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`
-    );
-
-    const data = await response.json();
-
-    displayMovies(data.results.slice(0, 12));
-}
-
-// Select Change
-themoviefilter.addEventListener("change", function () {
-    const selected = themoviefilter.value;
-
-    if (selected === "all") {
-        getAllMovies();
-    } else {
-        getGenreMovies(genres[selected]);
+        movies.forEach(movie => {
+            moviearticle.innerHTML += `
+                <article class="movie-card">
+                    <img src="${IMG_URL + movie.poster_path}" alt="${movie.title}">
+                    <h3>${movie.title}</h3>
+                    <p>${movie.vote_average.toFixed(1)}</p>
+                    <button>Watch Now</button>
+                </article>
+            `;
+        });
     }
-});
 
-// First Load
-getAllMovies();
+    // All Movies
+    async function getAllMovies() {
+        const response = await fetch(
+            `${BASE_URL}/movie/popular?api_key=${API_KEY}`
+        );
+
+        const data = await response.json();
+        displayMovies(data.results.slice(0, 12));
+    }
+
+    // Genre Movies
+    async function getGenreMovies(genreId) {
+        const response = await fetch(
+            `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`
+        );
+
+        const data = await response.json();
+        displayMovies(data.results.slice(0, 12));
+    }
+
+    // Select Change
+    themoviefilter.addEventListener("change", function () {
+        const selected = themoviefilter.value;
+
+        if (selected === "all") {
+            getAllMovies();
+        } else {
+            getGenreMovies(genres[selected]);
+        }
+    });
+
+    // First Load
+    getAllMovies();
+}
