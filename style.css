@@ -6,6 +6,9 @@
   --muted: #556b68;
   --primary: #260d82;
   --secondary: #abbe37;
+    --font-main: 'Poppins', sans-serif;
+    --font-secondary: 'Roboto', sans-serif;
+    --font-heading: 'Playfair Display', serif;
 }
 /* ===== HEADER RESPONSIVE FOR YOUR EXACT HTML ===== */
 
@@ -24,6 +27,7 @@
   font-size: clamp(2rem, 6vw, 4rem);
   line-height: 1.1;
   color: #260d82;
+  font-family: var(--font-heading);
 }
 
 /* NAV */
@@ -40,7 +44,6 @@
   font-weight: 600;
 }
 
-/* ===== MOBILE ===== */
 @media (max-width: 768px){
 
   .header-section{
@@ -64,10 +67,12 @@
   }
 }
 body {
+  font-family: var(--font-main);
   background: linear-gradient(
     150deg,
     var(--bg),
     var(--secondary)
+  
   );
 }
 button {
@@ -83,6 +88,7 @@ button {
   font-weight: 500;
 
   transition: all 0.2s ease;
+  font-family: var(--font-secondary);
 }
 button:hover {
   background: var(--secondary);
@@ -94,6 +100,7 @@ button:hover {
   font-size: large;
   color: var(--text);
   margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
 }
 .hero-card {
   background: var(--surface);
@@ -104,10 +111,15 @@ button:hover {
   gap: 1rem;
 }
 #heromovie img {
-  width: 1000px;
+  width: 100%;
   height: 700px;
   object-fit: cover;
   display: block;
+}
+@media (max-width: 768px) {
+  #heromovie img {
+         height: 300px;
+  }
 }
 .hero-content-bold p {
   font-weight: 600;
@@ -231,6 +243,7 @@ div h1 {
 .mini-card h3 {
   color: var(--primary);
   font-size: 1rem;
+  font-family: var(--font-heading);
 }
 
 .mini-card p {
@@ -250,6 +263,7 @@ div h1 {
   font-size: 1.5rem;
   color: var(--text);
   margin-bottom: 1rem;
+  font-family: var(--font-heading);
 }
 
 /* Grid layout */
@@ -295,6 +309,7 @@ div h1 {
 .toprated-card h3 {
   color: var(--primary);
   font-size: 1rem;
+  font-family: var(--font-heading);
 }
 
 .toprated-card p {
@@ -337,6 +352,7 @@ footer p {
 .heading {
   color: var(--text);
   font-size: 1.4rem;
+  font-family: var(--font-heading);
 }
 
 .movie-filter {
@@ -355,22 +371,20 @@ footer p {
   gap: 20px;
   flex: 1 1 calc(33.33% - 20px);
 }
-
 /* Cards */
 .movie-card {
   background: var(--surface);
   padding: 1rem;
   border-radius: 0.8rem;
-
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-
   transition: 0.2s ease;
 }
 
 .movie-card h3 {
   color: var(--primary);
+  font-family: var(--font-heading);
 }
 
 .movie-card p {
