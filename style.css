@@ -104,7 +104,7 @@ button:hover {
   gap: 1rem;
 }
 #heromovie img {
-  width: 1700px;
+  width: 1000px;
   height: 700px;
   object-fit: cover;
   display: block;
@@ -188,7 +188,11 @@ button:hover {
 .form input::placeholder {
   color: var(--muted);
 }
-
+div h1 {
+  color: #260d82;
+  font-weight: 700;
+  font-size: xx-large;
+}
 /* Button (uses your global button style but slightly smaller) */
 .form .buttons {
   padding: 0.4rem 0.9rem;
@@ -204,12 +208,10 @@ button:hover {
   margin-bottom: 1rem;
 }
 
-/* Grid layout */
 .trending-card {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
-  background: var(--surface);
   padding: 1.9rem;
   border-radius: 1rem;
 }
@@ -219,11 +221,10 @@ button:hover {
   background: var(--surface-strong);
   padding: 1rem;
   border-radius: 0.8rem;
-
+  box-shadow: black;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-
   transition: 0.2s ease;
 }
 
@@ -256,7 +257,6 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
-  background: var(--surface);
   padding: 1.9rem;
   border-radius: 1rem;
 }
@@ -350,9 +350,10 @@ footer p {
 
 /* Grid */
 .movies-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  flex: 1 1 calc(33.33% - 20px);
 }
 
 /* Cards */

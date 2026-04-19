@@ -3,22 +3,49 @@ const BASE_URL = "https://api.themoviedb.org/3";
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
 
 // TRENDING CARDS (3 ARTICLES)
+// ===== ELEMENTS =====
 const trending1 = document.getElementById("trending1");
 const trending2 = document.getElementById("trending2");
 const trending3 = document.getElementById("trending3");
 
-// TOP RATED CARDS (3 ARTICLES)
 const toprated1 = document.getElementById("toprated1");
 const toprated2 = document.getElementById("toprated2");
 const toprated3 = document.getElementById("toprated3");
 
-// HERO SECTION
 const heromovie = document.getElementById("heromovie");
 
 
-// HERO MOVIE
+// ===== WATCH TRAILER FUNCTION =====
+async function watchTrailer(movieId) {
+
+    const response = await fetch(
+        `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`
+    );
+
+    const data = await response.json();
+
+    const trailer = data.results.find(video =>
+        video.type === "Trailer" && video.site === "YouTube"
+    );
+
+    if (trailer) {
+        window.open(
+            `https://www.youtube.com/watch?v=${trailer.key}`,
+            "_blank"
+        );
+    } else {
+        alert("Trailer not found");
+    }
+}
+
+
+// ===== HERO MOVIE =====
 async function getHeroMovie() {
-    const response = await fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`);
+
+    const response = await fetch(
+        `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`
+    );
+
     const data = await response.json();
 
     const movie = data.results[0];
@@ -26,128 +53,182 @@ async function getHeroMovie() {
     heromovie.innerHTML = `
         <img src="${IMG_URL + movie.backdrop_path}" alt="${movie.title}">
         <h1>${movie.title}</h1>
-        <p>${movie.overview}</p>
-        <button>Watch Now</button>
+        <h2>${movie.overview}</h2>
+        <button onclick="watchTrailer(${movie.id})">Watch Trailer</button>
     `;
 }
 
 
-// TRENDING MOVIES
+// ===== TRENDING MOVIES =====
 async function getTrendingMovies() {
-    const response = await fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
+
+    const response = await fetch(
+        `${BASE_URL}/trending/movie/week?api_key=${API_KEY}`
+    );
+
     const data = await response.json();
 
     const movies = data.results.slice(0, 3);
 
     trending1.innerHTML = `
-        <img src="${IMG_URL + movies[0].poster_path}" alt="${movies[0].title}">
-        <h3>${movies[0].title}</h3>
+        <img src="${IMG_URL + movies[0].poster_path}">
+        <h1>${movies[0].title}</h1>
+        <button onclick="watchTrailer(${movies[0].id})">Watch Trailer</button>
     `;
 
     trending2.innerHTML = `
-        <img src="${IMG_URL + movies[1].poster_path}" alt="${movies[1].title}">
-        <h3>${movies[1].title}</h3>
+        <img src="${IMG_URL + movies[1].poster_path}">
+        <h1>${movies[1].title}</h1>
+        <button onclick="watchTrailer(${movies[1].id})">Watch Trailer</button>
     `;
 
     trending3.innerHTML = `
-        <img src="${IMG_URL + movies[2].poster_path}" alt="${movies[2].title}">
-        <h3>${movies[2].title}</h3>
+        <img src="${IMG_URL + movies[2].poster_path}">
+        <h1>${movies[2].title}</h1>
+        <button onclick="watchTrailer(${movies[2].id})">Watch Trailer</button>
     `;
 }
 
 
-// TOP RATED MOVIES
+// ===== TOP RATED MOVIES =====
 async function getTopRatedMovies() {
-    const response = await fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`);
+
+    const response = await fetch(
+        `${BASE_URL}/movie/top_rated?api_key=${API_KEY}`
+    );
+
     const data = await response.json();
 
     const movies = data.results.slice(0, 3);
 
     toprated1.innerHTML = `
-        <img src="${IMG_URL + movies[0].poster_path}" alt="${movies[0].title}">
-        <h3>${movies[0].title}</h3>
+        <img src="${IMG_URL + movies[0].poster_path}">
+        <h1>${movies[0].title}</h1>
+        <button onclick="watchTrailer(${movies[0].id})">Watch Trailer</button>
     `;
 
     toprated2.innerHTML = `
-        <img src="${IMG_URL + movies[1].poster_path}" alt="${movies[1].title}">
-        <h3>${movies[1].title}</h3>
+        <img src="${IMG_URL + movies[1].poster_path}">
+        <h1>${movies[1].title}</h1>
+        <button onclick="watchTrailer(${movies[1].id})">Watch Trailer</button>
     `;
 
     toprated3.innerHTML = `
-        <img src="${IMG_URL + movies[2].poster_path}" alt="${movies[2].title}">
-        <h3>${movies[2].title}</h3>
+        <img src="${IMG_URL + movies[2].poster_path}">
+        <h1>${movies[2].title}</h1>
+        <button onclick="watchTrailer(${movies[2].id})">Watch Trailer</button>
     `;
 }
 
 
-// RUN
+// ===== RUN =====
 getHeroMovie();
 getTrendingMovies();
 getTopRatedMovies();
 
-
-// SAFE VERSION OF YOUR CODE
-
+// Movie html code//
 const themoviefilter = document.getElementById("themoviefilter");
-const moviearticle = document.getElementById("moviearticle");
+const moviegrid = document.getElementById("moviegrid");
 
-// Genre IDs
 const genres = {
     action: 28,
     animation: 16,
     horror: 27
 };
 
-// Only run if elements exist on this page
-if (themoviefilter && moviearticle) {
+let currentPage = 1;
+let currentGenre = "all";
 
-    // Display Movies
-    function displayMovies(movies) {
-        moviearticle.innerHTML = "";
+async function watchTrailer(movieId) {
+    const response = await fetch(
+        `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`
+    );
 
-        movies.forEach(movie => {
-            moviearticle.innerHTML += `
-                <article class="movie-card">
-                    <img src="${IMG_URL + movie.poster_path}" alt="${movie.title}">
-                    <h3>${movie.title}</h3>
-                    <p>${movie.vote_average.toFixed(1)}</p>
-                    <button>Watch Now</button>
-                </article>
-            `;
-        });
-    }
+    const data = await response.json();
 
-    // All Movies
-    async function getAllMovies() {
-        const response = await fetch(
-            `${BASE_URL}/movie/popular?api_key=${API_KEY}`
+    const trailer = data.results.find(video =>
+        video.type === "Trailer" && video.site === "YouTube"
+    );
+
+    if (trailer) {
+        window.open(
+            `https://www.youtube.com/watch?v=${trailer.key}`,
+            "_blank"
         );
-
-        const data = await response.json();
-        displayMovies(data.results.slice(0, 12));
+    } else {
+        alert("Trailer not found");
     }
-
-    // Genre Movies
-    async function getGenreMovies(genreId) {
-        const response = await fetch(
-            `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`
-        );
-
-        const data = await response.json();
-        displayMovies(data.results.slice(0, 12));
-    }
-
-    // Select Change
-    themoviefilter.addEventListener("change", function () {
-        const selected = themoviefilter.value;
-
-        if (selected === "all") {
-            getAllMovies();
-        } else {
-            getGenreMovies(genres[selected]);
-        }
-    });
-
-    // First Load
-    getAllMovies();
 }
+
+window.watchTrailer = watchTrailer;
+
+function showMovies(movies, clear = false) {
+    if (clear) {
+        moviegrid.innerHTML = "";
+    }
+
+    movies.forEach(movie => {
+        const card = document.createElement("article");
+        card.classList.add("movie-card");
+
+        card.innerHTML = `
+            <img src="${IMG_URL + movie.poster_path}" alt="${movie.title}">
+            <h3>${movie.title}</h3>
+            <p>⭐ ${movie.vote_average.toFixed(1)}</p>
+            <button onclick="watchTrailer(${movie.id})">
+                Watch Trailer
+            </button>
+        `;
+
+        moviegrid.appendChild(card);
+    });
+}
+
+async function getAllMovies(page = 1, clear = false) {
+    const response = await fetch(
+        `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${page}`
+    );
+
+    const data = await response.json();
+
+    showMovies(data.results, clear);
+}
+
+async function getGenreMovies(id, page = 1, clear = false) {
+    const response = await fetch(
+        `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${id}&page=${page}`
+    );
+
+    const data = await response.json();
+
+    showMovies(data.results, clear);
+}
+
+function loadMovies(page = 1, clear = false) {
+    if (currentGenre === "all") {
+        getAllMovies(page, clear);
+    } else {
+        getGenreMovies(genres[currentGenre], page, clear);
+    }
+}
+
+themoviefilter.addEventListener("change", function () {
+    currentGenre = themoviefilter.value;
+    currentPage = 1;
+    loadMovies(1, true);
+});
+
+window.addEventListener("scroll", function () {
+    if (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 300
+    ) {
+        currentPage++;
+        loadMovies(currentPage, false);
+    }
+});
+
+loadMovies(1, true);
+
+//Trending html code
+
