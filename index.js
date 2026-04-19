@@ -174,7 +174,7 @@ function showMovies(movies, clear = false) {
         card.innerHTML = `
             <img src="${IMG_URL + movie.poster_path}" alt="${movie.title}">
             <h3>${movie.title}</h3>
-            <p>⭐ ${movie.vote_average.toFixed(1)}</p>
+            <p> ${movie.vote_average.toFixed(1)}</p>
             <button onclick="watchTrailer(${movie.id})">
                 Watch Trailer
             </button>
