@@ -230,5 +230,3 @@ window.addEventListener("scroll", function () {
 
 loadMovies(1, true);
 
-//Trending html code
-
