@@ -2,8 +2,6 @@ const API_KEY = "5a6e3de1cadd2f14d90edffa614e4263";
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
 
-// TRENDING CARDS (3 ARTICLES)
-// ===== ELEMENTS =====
 const trending1 = document.getElementById("trending1");
 const trending2 = document.getElementById("trending2");
 const trending3 = document.getElementById("trending3");
@@ -14,32 +12,6 @@ const toprated3 = document.getElementById("toprated3");
 
 const heromovie = document.getElementById("heromovie");
 
-
-// ===== WATCH TRAILER FUNCTION =====
-async function watchTrailer(movieId) {
-
-    const response = await fetch(
-        `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`
-    );
-
-    const data = await response.json();
-
-    const trailer = data.results.find(video =>
-        video.type === "Trailer" && video.site === "YouTube"
-    );
-
-    if (trailer) {
-        window.open(
-            `https://www.youtube.com/watch?v=${trailer.key}`,
-            "_blank"
-        );
-    } else {
-        alert("Trailer not found");
-    }
-}
-
-
-// ===== HERO MOVIE =====
 async function getHeroMovie() {
 
     const response = await fetch(
@@ -57,9 +29,6 @@ async function getHeroMovie() {
         <button onclick="watchTrailer(${movie.id})">Watch Trailer</button>
     `;
 }
-
-
-// ===== TRENDING MOVIES =====
 async function getTrendingMovies() {
 
     const response = await fetch(
@@ -89,8 +58,6 @@ async function getTrendingMovies() {
     `;
 }
 
-
-// ===== TOP RATED MOVIES =====
 async function getTopRatedMovies() {
 
     const response = await fetch(
@@ -120,15 +87,15 @@ async function getTopRatedMovies() {
     `;
 }
 
-
-// ===== RUN =====
 getHeroMovie();
 getTrendingMovies();
 getTopRatedMovies();
 
-// Movie html code//
 const themoviefilter = document.getElementById("themoviefilter");
 const moviegrid = document.getElementById("moviegrid");
+
+const movieSearch = document.querySelector(".movie-search");
+const searchInput = document.getElementById("searchinput");
 
 const genres = {
     action: 28,
@@ -204,6 +171,16 @@ async function getGenreMovies(id, page = 1, clear = false) {
     showMovies(data.results, clear);
 }
 
+async function searchMovies(query) {
+    const response = await fetch(
+        `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`
+    );
+
+    const data = await response.json();
+
+    showMovies(data.results, true);
+}
+
 function loadMovies(page = 1, clear = false) {
     if (currentGenre === "all") {
         getAllMovies(page, clear);
@@ -225,6 +202,15 @@ window.addEventListener("scroll", function () {
     ) {
         currentPage++;
         loadMovies(currentPage, false);
+    }
+});
+movieSearch.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const searchValue = searchInput.value.trim();
+
+    if (searchValue !== "") {
+        searchMovies(searchValue);
     }
 });
 
