@@ -3,14 +3,12 @@
   --surface: rgba(255, 255, 255, 0.84);
   --surface-strong: #fffef9;
   --text: #183a37;
-  --muted: #556b68;
   --primary: #260d82;
   --secondary: #abbe37;
     --font-main: 'Poppins', sans-serif;
     --font-secondary: 'Roboto', sans-serif;
     --font-heading: 'Playfair Display', serif;
 }
-/* ===== HEADER RESPONSIVE FOR YOUR EXACT HTML ===== */
 
 .header-section{
   display: flex;
@@ -21,7 +19,7 @@
   padding: 1rem 2rem;
 }
 
-/* LOGO */
+
 .logo-div h1{
   margin: 0;
   font-size: clamp(2rem, 6vw, 4rem);
@@ -148,13 +146,11 @@ button:hover {
   padding: 1rem 2rem;
 }
 
-/* Logo */
 .logo-div h1 {
   font-size: 3.3rem;
   color: var(--primary);
 }
 
-/* Navbar */
 .nav-bar {
   display: flex;
   gap: 9.5rem;
@@ -174,15 +170,31 @@ button:hover {
   padding: 0.8rem;
 }
 
-/* Search Form */
-.form {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.movie-search{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+   margin: 20px auto;
+   flex-wrap: wrap;
+}
 
-  background: var(--surface-strong);
-  padding: 0.3rem;
-  border-radius: 999px;
+.movie-search input{
+   width: 320px;
+   max-width: 90%;
+   padding: 12px 15px;
+   border: none;
+   border-radius: 8px;
+   outline: none;
+   font-size: 1rem;
+}
+
+.movie-search button{
+   padding: 12px 18px;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   font-weight: bold;
 }
 
 .form input {
@@ -205,7 +217,7 @@ div h1 {
   font-weight: 700;
   font-size: xx-large;
 }
-/* Button (uses your global button style but slightly smaller) */
+
 .form .buttons {
   padding: 0.4rem 0.9rem;
   font-size: 0.85rem;
@@ -228,7 +240,6 @@ div h1 {
   border-radius: 1rem;
 }
 
-/* Individual cards */
 .mini-card {
   background: var(--surface-strong);
   padding: 1rem;
@@ -317,7 +328,6 @@ div h1 {
   font-size: 0.9rem;
 }
 
-/* Button alignment */
 .toprated-card button {
   margin-top: auto;
 }
@@ -336,12 +346,10 @@ footer p {
   font-size: 0.9rem;
 }
 
-/* MOvie.html page stylings*/
 .movies-page {
   padding: 2rem 1rem;
 }
 
-/* Top section */
 .movie-section {
   display: flex;
   justify-content: space-between;
@@ -364,14 +372,13 @@ footer p {
   align-items: center;
 }
 
-/* Grid */
 .movies-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   flex: 1 1 calc(33.33% - 20px);
 }
-/* Cards */
+
 .movie-card {
   background: var(--surface);
   padding: 1rem;
