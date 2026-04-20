@@ -3,7 +3,8 @@ const {
   getCurrentPage,
   formatRating,
   getMovieTitle
-} = require("./movieFunctions");
+} 
+= require("./movieFunctions");
 
 test("returns horror genre id", () => {
   expect(getGenres().horror).toBe(27);

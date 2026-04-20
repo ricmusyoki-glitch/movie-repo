@@ -91,6 +91,7 @@ getHeroMovie();
 getTrendingMovies();
 getTopRatedMovies();
 
+/* This is the function for the movie.html*/
 const themoviefilter = document.getElementById("themoviefilter");
 const moviegrid = document.getElementById("moviegrid");
 
