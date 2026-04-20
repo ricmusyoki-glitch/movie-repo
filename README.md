@@ -29,7 +29,6 @@ Visit the movie page for categories.
 Click the "Watch trailer" button to see the trailer of the movie you want.
 
 ## Future Improvements
-Search movies by name.
 Add ratings and reviews.
 Add favorite watchlist feature.
 Add a dark mode feature.
