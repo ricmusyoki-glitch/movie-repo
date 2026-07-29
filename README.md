@@ -35,4 +35,4 @@ Add a dark mode feature.
 A full movie details page.
 
 ## Developer
-The Ric's Movie website was created by a very senior and serious software Engineer by the name Ric Musyoki.
+The Ric's Movie website was created by a very senior and serious software Engineer by the name Ric Musyoki.Testing Git on Wed Jul 29 22:29:14 EAT 2026
